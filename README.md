@@ -9,7 +9,7 @@ Strangely, the language server appears to crash when the completion list returne
 If completions from the community or any other collection dont appear, create an `ansible.cfg` file in your project and add the path of your collection.
 
 ### Detecting your Ansible files
-Currently, it appears that we might not be able to fully use glob patterns with file extensions containing two dots in `path_suffixes` under `languages/ansible/config.toml` (related issue here).
+Currently, it appears that we might not be able to fully use glob patterns with file extensions containing two dots in `path_suffixes` under `languages/ansible/config.toml` (related issue [here](https://github.com/zed-industries/zed/issues/10997)).
 
 The workaround for this is to add something like th9s following under Zed's global settings to correctly assign the `Ansible` filetype to your relevant ansible files:
 ```
