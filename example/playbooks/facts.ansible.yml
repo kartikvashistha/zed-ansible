@@ -1,0 +1,12 @@
+- name: Display system facts that are available to Ansible
+  hosts: localhost
+  tasks:
+    - name: Print all available facts
+      ansible.builtin.debug:
+        var: ansible_facts
+    - name: Print env
+      ansible.builtin.debug:
+        var: ansible_facts['env']
+    - name: Print distribution
+      ansible.builtin.debug:
+        var: ansible_facts['distribution']

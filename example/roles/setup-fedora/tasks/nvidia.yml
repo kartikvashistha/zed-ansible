@@ -1,0 +1,29 @@
+# code: language=ansible
+---
+- name: Install nvidia drivers
+  ansible.builtin.dnf:
+    name: akmod-nvidia
+    state: present
+  become: true
+  become_user: root
+
+- name: Install the optional 64 bit & 32 bit CUDA and NVENC packages
+  ansible.builtin.dnf:
+    name: "{{ nvidia_optional_packages }}"
+    state: present
+  become: true
+  become_user: root
+
+- name: Install Vulkan
+  ansible.builtin.dnf:
+    name: vulkan
+    state: present
+  become: true
+  become_user: root
+
+- name: Install packges to enable video acceleration in media players
+  ansible.builtin.dnf:
+    name: vdpauinfo, libva-vdpau-driver, libva-utils
+    state: present
+  become: true
+  become_user: root

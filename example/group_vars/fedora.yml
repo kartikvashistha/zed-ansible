@@ -1,0 +1,122 @@
+nvidia: true
+docker: true
+clone_nerdfonts: true
+enable_flatpak: true
+
+packages:
+  - fastfetch
+  - fzf
+  - golang
+  - htop
+  - glances
+  - steam
+  - pavucontrol
+  - vim-enhanced
+  - samba
+  # - gnome-tweaks
+  - code
+  - 1password
+  - 1password-cli
+  - google-chrome-stable
+  - flatpak
+  - neovim
+  - firefox
+  - NetworkManager-wifi
+  - iwlegacy-firmware
+  - iwlwifi-dvm-firmware
+  - iwlwifi-mvm-firmware
+  # - gnome-extensions-app
+  - python3-ansible-lint
+  - python3-virtualenvwrapper
+  - nordvpn
+  - nodejs
+  - gcc
+  - gcc-c++
+  - make
+  - kubectl
+  - bc
+  - unzip
+  - thunderbird
+  - https://github.com/wez/wezterm/releases/download/20240203-110809-5046fc22/wezterm-20240203_110809_5046fc22-1.fedora39.x86_64.rpm
+  - https://storage.googleapis.com/minikube/releases/latest/minikube-latest.x86_64.rpm
+  - tmux
+  - fd-find
+  - ripgrep
+  - python3-pip
+  - regexp
+  - cargo
+  - julia
+  - composer
+  - php
+  - ruby
+  - luarocks
+  - kitty
+
+grouplist:
+  - "@core"
+  - "@sound-and-video"
+  - "@virtualization"
+  - "@multimedia"
+
+flatpak:
+  - com.spotify.Client
+  - org.telegram.desktop
+  - us.zoom.Zoom
+  - org.signal.Signal
+
+third_party_repos:
+  - name: 1password
+    description: "1Password Stable Channel"
+    baseurl: https://downloads.1password.com/linux/rpm/stable/$basearch
+    enabled: true
+    gpgcheck: true
+    repo_gpgcheck: true
+    gpgkey: https://downloads.1password.com/linux/keys/1password.asc
+
+  - name: vscode
+    description: Visual Studio Code
+    baseurl: https://packages.microsoft.com/yumrepos/vscode
+    enabled: true
+    gpgcheck: true
+    repo_gpgcheck: true
+    gpgkey: https://packages.microsoft.com/keys/microsoft.asc
+
+  - name: google-chrome
+    description: google-chrome
+    baseurl: https://dl.google.com/linux/chrome/rpm/stable/x86_64
+    enabled: true
+    gpgcheck: true
+    repo_gpgcheck: true
+    gpgkey: https://dl.google.com/linux/linux_signing_key.pub
+
+  - name: google-cloud-sdk.repo
+    description: Google Cloud CLI
+    baseurl: https://packages.cloud.google.com/yum/repos/cloud-sdk-el8-x86_64
+    enabled: true
+    gpgcheck: true
+    repo_gpgcheck: false
+    gpgkey: https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+
+  - name: docker-ce.repo
+    description: Docker CE Stable - $basearch
+    baseurl: https://download.docker.com/linux/fedora/$releasever/$basearch/stable
+    enabled: true
+    gpgcheck: true
+    repo_gpgcheck: false
+    gpgkey: https://download.docker.com/linux/fedora/gpg
+
+  - name: nordvpn
+    description: nordvpn
+    baseurl: https://repo.nordvpn.com//yum/nordvpn/centos/x86_64
+    enabled: true
+    gpgcheck: false
+    repo_gpgcheck: false
+    gpgkey:
+
+  - name: libnvidia-container
+    description: libnvidia-container
+    baseurl: https://nvidia.github.io/libnvidia-container/stable/centos8/$basearch
+    enabled: true
+    gpgcheck: false
+    repo_gpgcheck: true
+    gpgkey: https://nvidia.github.io/libnvidia-container/gpgkey

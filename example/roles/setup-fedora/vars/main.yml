@@ -1,0 +1,4 @@
+---
+# List of packages, third party repos and more as vars
+rpmfusion_free: "http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ version }}.noarch.rpm"
+rpmfusion_non_free: "http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ version }}.noarch.rpm"
