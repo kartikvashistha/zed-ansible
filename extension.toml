@@ -1,0 +1,20 @@
+id = "ansible"
+name = "Ansible Language Server"
+version = "0.0.1"
+schema_version = 1
+
+description = "Ansible Language Server extension for Zed."
+authors = ["Kartik Vashistha <kartikv.work@gmail.com>"]
+repository = "https://github.com/kartikvashistha/zed-ansible"
+
+[language_servers.ansible]
+name = "Ansible"
+language = "Ansible"
+
+# [grammars.yaml]
+# repository = "https://github.com/ikatyang/tree-sitter-yaml"
+# commit = "0e36bed171768908f331ff7dff9d956bae016efb"
+
+# [grammars.yaml]
+# repository = "https://github.com/zed-industries/tree-sitter-yaml"
+# commit = "f545a41f57502e1b5ddf2a666889V6c1b0620f930"
