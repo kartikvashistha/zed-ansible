@@ -1,0 +1,5 @@
+- name: Install neovim config
+  hosts: localhost
+
+  roles:
+    - role: setup-fedora

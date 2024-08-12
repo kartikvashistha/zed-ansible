@@ -1,0 +1,37 @@
+---
+# Install and configure docker
+- name: Install a list of docker packages
+  ansible.builtin.dnf:
+    name: "{{ docker_packages }}"
+    state: present
+  notify: Start Docker Service
+  become: true
+  become_user: root
+
+# Add $USER to docker group per docker postinstall instructions: https://docs.docker.com/engine/install/linux-postinstall/
+- name: Add the $USER to docker group
+  ansible.builtin.user:
+    name: "{{ home_username }}"
+    groups: docker
+    append: true
+  become: true
+  become_user: root
+
+# Install the nvidia container toolkit.
+- name: Install nvidia-container-toolkit for gpu acceleration with Docker containers
+  ansible.builtin.dnf:
+    name: nvidia-container-toolkit
+    state: present
+  when: nvidia
+  become: true
+  become_user: root
+
+# Modify /etc/docker/daemon.json for Docker to be able to use NVIDIA Container Runtime:
+# https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html#installing-with-yum-or-dnf
+- name: Modify /etc/docker/daemon.json
+  ansible.builtin.template:
+    src: templates/daemon.json.j2
+    dest: /etc/docker/daemon.json
+    mode: "0777"
+  become: true
+  become_user: root

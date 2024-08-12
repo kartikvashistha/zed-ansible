@@ -1,0 +1,63 @@
+---
+# defaults files for setup-fedora. Feel free to override these values with your desired values at play level.
+nvidia: false
+docker: false
+
+enable_flatpak: false
+
+clone_nerdfonts: false
+
+home_username: "{{ ansible_facts['env']['USERNAME'] }}"
+home_user_path: "{{ ansible_facts['env']['HOME'] }}"
+
+version: "{{ ansible_facts['distribution_version'] }}"
+
+packages:
+  - fastfetch
+  - fzf
+  - htop
+  - pavucontrol
+  - vim-enhanced
+  - flatpak
+  - neovim
+  - firefox
+  - python3-ansible-lint
+  - python3-virtualenvwrapper
+  - gcc
+  - gcc-c++
+  - make
+  - unzip
+  - thunderbird
+
+nvidia_optional_packages:
+  - xorg-x11-drv-nvidia-cuda
+  - xorg-x11-drv-nvidia-cuda-libs
+  - xorg-x11-drv-nvidia-libs.i686
+
+docker_packages:
+  - docker-ce
+  - docker-ce-cli
+  - containerd.io
+  - docker-buildx-plugin
+  - docker-compose-plugin
+
+grouplist:
+  - '@core'
+  - '@sound-and-video'
+  - '@virtualization'
+  - '@multimedia'
+
+flatpak:
+  - com.spotify.Client
+  - org.telegram.desktop
+  - us.zoom.Zoom
+  - org.signal.Signal
+
+third_party_repos:
+  - name: google-chrome
+    description: google-chrome
+    baseurl: https://dl.google.com/linux/chrome/rpm/stable/x86_64
+    enabled: true
+    gpgcheck: true
+    repo_gpgcheck: true
+    gpgkey: https://dl.google.com/linux/linux_signing_key.pub

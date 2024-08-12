@@ -1,0 +1,14 @@
+galaxy_info:
+  author: Kartik Vashistha
+  description: Ansible role to configure a fresh Fedora install with my desired repos & software.
+
+  license: MIT
+  min_ansible_version: "2.1"
+  platforms:
+    - name: Fedora
+      versions:
+        - all
+
+  galaxy_tags: []
+
+dependencies: []

@@ -1,0 +1,13 @@
+---
+# handlers file for setup-fedora
+- name: Start Docker Service
+  ansible.builtin.service:
+    name: docker
+    state: started
+    enabled: true
+
+- name: service 2
+  ansible.builtin.service:
+    name: podman
+    state: started
+    enabled: true
