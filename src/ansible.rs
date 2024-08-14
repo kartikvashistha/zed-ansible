@@ -87,29 +87,6 @@ impl zed::Extension for AnsibleExtension {
         })
     }
 
-    fn language_server_initialization_options(
-        &mut self,
-        server_id: &zed::LanguageServerId,
-        worktree: &zed_extension_api::Worktree,
-    ) -> Result<Option<zed_extension_api::serde_json::Value>> {
-        let settings = LspSettings::for_worktree(server_id.as_ref(), worktree)
-            .ok()
-            .and_then(|lsp_settings| lsp_settings.initialization_options.clone())
-            .unwrap_or_default();
-        Ok(Some(settings))
-    }
-
-    // fn language_server_initialization_options(
-    //     &mut self,
-    //     _language_server_id: &zed::LanguageServerId,
-    //     _worktree: &zed::Worktree,
-    // ) -> Result<Option<serde_json::Value>> {
-    //     Ok(Some(serde_json::json!({
-    //         "executionEnvironmnet": {
-    //             "enabled": false,
-    //         }
-    //     })))
-    // }
     fn language_server_workspace_configuration(
         &mut self,
         _language_server_id: &zed::LanguageServerId,
@@ -119,32 +96,11 @@ impl zed::Extension for AnsibleExtension {
             .ok()
             .and_then(|lsp_settings| lsp_settings.settings.clone())
             .unwrap_or_default();
-        Ok(Some(settings))
+
+        Ok(Some(serde_json::json!({
+            "ansible": settings
+        })))
     }
-
-    // fn language_server_workspace_configuration(
-    //     &mut self,
-    //     server_id: &zed::LanguageServerId,
-    //     worktree: &zed::Worktree,
-    // ) -> Result<Option<Value>> {
-    //     // elm-language-server expects workspace didChangeConfiguration notification
-    //     // params to be the same as lsp initialization_options
-    //     let initialization_options = LspSettings::for_worktree(server_id.as_ref(), worktree)?
-    //         .initialization_options
-    //         .clone()
-    //         .unwrap_or_default();
-
-    //     Ok(Some(match initialization_options.clone().as_object_mut() {
-    //         Some(op) => {
-    //             // FIX: elm-language-server requests workspace configuration
-    //             // for the `elmLS` section, so we have to nest
-    //             // another copy of initialization_options there
-    //             op.insert("ansible-language-server".into(), initialization_options);
-    //             serde_json::to_value(op).unwrap_or_default()
-    //         }
-    //         None => initialization_options,
-    //     }))
-    // }
 }
 
 zed::register_extension!(AnsibleExtension);
