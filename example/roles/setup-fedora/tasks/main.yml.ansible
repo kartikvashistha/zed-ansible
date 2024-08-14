@@ -97,29 +97,3 @@
   community.general.npm:
     name: commitizen
     global: true
-
-- name: Install asdf
-  community.general.homebrew:
-    name:  asdf
-    state: present
-
-- name: Install a community flatpak
-  community.general.flatpak:
-    name: wezterm
-    remote: flathub
-    state:
-
-- name: asdsd
-  community.general.npm:
-    name: commitizen
-    global: true
-
-- name: brew install nodejs
-  community.general.homebrew:
-    name: nodejs
-    state: present
-
-- name: brew install vscode
-  community.general.homebrew_cask:
-    name: vs-code
-    state: present
