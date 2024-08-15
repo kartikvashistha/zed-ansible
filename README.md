@@ -15,11 +15,16 @@ The workaround for this is to add something like the following under Zed's setti
     "Ansible": [
       "**.ansible.yml",
       "**/defaults/**.yml",
+      "**/defaults/**.yaml",
+      "**/meta/**.yml",
+      "**/meta/**.yaml",
       "**/tasks/**.yml",
       "**/tasks/*.yml",
       "**/tasks/*.yaml",
       "**/handlers/*.yml",
       "**/handlers/*.yaml",
+      "**/group_vars/**.yml",
+      "**/group_vars/**.yaml",
       "**playbook*.yaml",
       "**playbook*.yml"
     ]
