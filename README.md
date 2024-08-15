@@ -6,7 +6,9 @@ For the best experience, it is recommended to add the following configuration un
 
 ### Filetypes
 
-Currently, it appears that we might not be able to fully use glob patterns with file extensions containing two dots in `path_suffixes` under `languages/ansible/config.toml` (related issue [here](https://github.com/zed-industries/zed/issues/10997)).
+By default, the Ansible LSP attaches to all files ending with `.ansible`.
+
+It appears that we might not be able to configure the LSP to fully use glob patterns within this extension to detect ansible files under common directories (related issue [here](https://github.com/zed-industries/zed/issues/10997)) - as such, for the time being, it's reccomended to configure this in `file_types` under Zed's settings.
 
 The workaround for this is to add something like the following under Zed's settings to correctly assign the `Ansible` filetype to your relevant ansible files:
 ```json
@@ -68,7 +70,7 @@ In it's current state, the language server gets started and performs decently we
 
 Sometimes, the language server may crash when the completion list returned from the LSP is quite large, and only a restart of the workspace fixes it. For the time being, I'm unable to determine how this can be fixed - I think it happens when `executionEnvironment` is not explicity set, but I'm not clear about this.
 
-If completions from the community or any other collection dont appear, create an `ansible.cfg` file in your project and add the path of your collection im there.
+If completions from the community or any other collection dont appear, create an `ansible.cfg` file in your project and add the path of your collection in there.
 
 ### Highlighting
 Currently, this implementaion uses YAML for syntax highlighting. Note, I haven't been able to get the Ansible LSP's additional highlighting working alongisde this (or at least unable to determine if it's working at all).
