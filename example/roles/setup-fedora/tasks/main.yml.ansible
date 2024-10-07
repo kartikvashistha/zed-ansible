@@ -97,3 +97,4 @@
   community.general.npm:
     name: commitizen
     global: true
+
