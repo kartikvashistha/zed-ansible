@@ -11,6 +11,3 @@ repository = "https://github.com/kartikvashistha/zed-ansible"
 name = "Ansible"
 language = "Ansible"
 
-[grammars.yaml]
-repository = "https://github.com/tree-sitter-grammars/tree-sitter-yaml"
-commit = "7b03feefd36b5f155465ca736c6304aca983b267"

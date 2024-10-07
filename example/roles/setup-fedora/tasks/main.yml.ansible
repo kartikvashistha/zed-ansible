@@ -97,3 +97,8 @@
   community.general.npm:
     name: commitizen
     global: true
+
+- name: Install something
+  ansible.builtin.dnf:
+    name: git
+    state: present
