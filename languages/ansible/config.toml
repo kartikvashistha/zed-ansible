@@ -1,29 +1,16 @@
 name = "Ansible"
 grammar = "yaml"
-
 path_suffixes = ["ansible"]
-
-# INFO: Following doesn't work yet - however, the contents of this list can be added to the 'Ansible' key under file_types under Zed Settings.
-# path_suffixes = [
-#     "**.ansible.yml",
-#     "**/defaults/**.yml",
-#     "**/tasks/**.yml",
-#     "**/tasks/*.yml",
-#     "**/tasks/*.yaml",
-#     "**/handlers/*.yml",
-#     "**/handlers/*.yaml",
-#     "**/meta/*.yml",
-#     "**/playbooks/*.yml",
-# ]
-
 first_line_pattern = '^#!.*ansible.*'
-
 line_comments = ["# "]
 autoclose_before = ",]}"
 brackets = [
     { start = "{", end = "}", close = true, newline = true },
     { start = "[", end = "]", close = true, newline = true },
     { start = "\"", end = "\"", close = true, newline = false, not_in = [
+        "string",
+    ] },
+    { start = "'", end = "'", close = true, newline = false, not_in = [
         "string",
     ] },
 ]
