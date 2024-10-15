@@ -1,9 +1,9 @@
 id = "ansible"
 name = "Ansible Language Server"
-version = "0.0.1"
+version = "0.0.2"
 schema_version = 1
 
-description = "Ansible language server support for Zed.\nFor the best experience, please find the recommended settings in the extension project's README."
+description = "Ansible language server support for Zed. For the best experience, please find the recommended settings in the extension project's README.\nNote, syntax highlighting has been temporarily disabled."
 authors = ["Kartik Vashistha <kartikv.work@gmail.com>"]
 repository = "https://github.com/kartikvashistha/zed-ansible"
 
