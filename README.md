@@ -2,9 +2,6 @@
 
 A WIP Ansible LSP Extension for the Zed editor.
 
->[!NOTE]
->Highlighting has been temporarily disabled due to a memory leak issue. To keep up-to date on when highlighting will be re-enabled, please follow the issue [here](https://github.com/kartikvashistha/zed-ansible/issues/2).
-
 ## Recomended Settings
 
 For the best experience, it is recommended to add the following configuration under Zed's global settings:
@@ -84,4 +81,7 @@ If completions from the community or any other collection dont appear, create an
 
 ### Highlighting
 
-Currently, this implementaion uses YAML for syntax highlighting. Note, I haven't been able to get the Ansible LSP's additional highlighting working alongisde this (or at least unable to determine if it's working at all).
+Currently, this implementaion uses YAML for syntax highlighting.
+
+>[!NOTE]
+>Additional highlighting via the LSP doesn't work due to lack of semantic token support by Zed itself. Follow [this](https://github.com/zed-industries/zed/issues/7450) issue to keep upto date on when it's available for use.
