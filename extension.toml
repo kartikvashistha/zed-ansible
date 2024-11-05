@@ -11,7 +11,7 @@ repository = "https://github.com/kartikvashistha/zed-ansible"
 name = "Ansible"
 language = "Ansible"
 
-[grammars.ansible]
-repository = "https://github.com/kartikvashistha/zed-tree-sitter-yaml"
-commit = "bbe3aa859d16b95e9e9c0a2afd33da4e54f6b958"
-path = "dialects/tree-sitter-ansible"
+# [grammars.ansible]
+# repository = "https://github.com/kartikvashistha/zed-tree-sitter-yaml"
+# commit = "bbe3aa859d16b95e9e9c0a2afd33da4e54f6b958"
+# path = "dialects/tree-sitter-ansible"
