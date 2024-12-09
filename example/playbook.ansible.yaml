@@ -1,0 +1,9 @@
+---
+# Comment
+- name: Install neovim config
+  hosts: localhost
+
+  # Some other comment
+  roles:
+    - role: setup-fedora
+    - role: dotfiles
