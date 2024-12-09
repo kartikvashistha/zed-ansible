@@ -1,7 +1,6 @@
 name = "Ansible"
 grammar = "ansible"
 path_suffixes = ["ansible"]
-first_line_pattern = '^#!.*ansible'
 line_comments = ["# "]
 autoclose_before = ",]}"
 brackets = [
@@ -15,7 +14,8 @@ brackets = [
     ] },
 ]
 
+auto_indent_on_paste = false
 auto_indent_using_last_non_empty_line = false
 increase_indent_pattern = ":\\s*[|>]?\\s*$"
-prettier_parser_name = "yaml"
+# prettier_parser_name = "ansible"
 tab_size = 2

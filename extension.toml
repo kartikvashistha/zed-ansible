@@ -7,11 +7,14 @@ description = "Ansible language server support for Zed. For the best experience,
 authors = ["Kartik Vashistha <kartikv.work@gmail.com>"]
 repository = "https://github.com/kartikvashistha/zed-ansible"
 
-[language_servers.ansible]
-name = "Ansible"
+[language_servers.ansible-language-server]
+name = "Ansible Language Server"
 language = "Ansible"
 
 [grammars.ansible]
-repository = "https://github.com/kartikvashistha/zed-tree-sitter-yaml"
-commit = "bbe3aa859d16b95e9e9c0a2afd33da4e54f6b958"
-path = "dialects/tree-sitter-ansible"
+repository = "https://github.com/kartikvashistha/zed-tree-sitter-ansible"
+commit = "95243a35141b8e531c90b684f9ba83e91f2e3a40"
+
+# [grammars.yaml]
+# commit = "baff0b51c64ef6a1fb1f8390f3ad6015b83ec13a"
+# repository = "https://github.com/zed-industries/tree-sitter-yaml"
