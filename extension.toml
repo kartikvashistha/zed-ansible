@@ -1,6 +1,6 @@
 id = "ansible"
 name = "Ansible Language Server"
-version = "0.1.0"
+version = "0.1.1"
 schema_version = 1
 
 description = "Ansible language server support for Zed. For the best experience, please find the recommended settings in the extension project's README."
