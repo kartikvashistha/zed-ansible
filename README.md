@@ -11,7 +11,7 @@ Ensure python3, ansible and ansible-lint are installed via your system's package
 brew install ansible ansible-lint
 
 # For Fedora based systems
-sudo dnf install ansible ansible-lint python3
+sudo dnf install ansible python3-ansible-lint
 
 # For Ubuntu based systems
 sudo apt install ansible ansible-lint python3
