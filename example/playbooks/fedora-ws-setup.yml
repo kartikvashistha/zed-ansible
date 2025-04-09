@@ -1,0 +1,6 @@
+
+- name: Setup a Fedora Workstation machine
+  hosts: fedora
+
+  roles:
+    - role: fedora_workstation

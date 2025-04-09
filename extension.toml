@@ -1,6 +1,6 @@
 id = "ansible"
 name = "Ansible Language Server"
-version = "0.1.0"
+version = "0.1.1"
 schema_version = 1
 
 description = "Ansible language server support for Zed. For the best experience, please find the recommended settings in the extension project's README."
@@ -11,7 +11,6 @@ repository = "https://github.com/kartikvashistha/zed-ansible"
 name = "Ansible"
 language = "Ansible"
 
-[grammars.ansible]
-repository = "https://github.com/kartikvashistha/zed-tree-sitter-yaml"
-commit = "bbe3aa859d16b95e9e9c0a2afd33da4e54f6b958"
-path = "dialects/tree-sitter-ansible"
+[grammars.yaml]
+repository = "https://github.com/zed-industries/tree-sitter-yaml"
+commit = "baff0b51c64ef6a1fb1f8390f3ad6015b83ec13a"

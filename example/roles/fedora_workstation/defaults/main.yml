@@ -1,5 +1,6 @@
 ---
-# defaults files for setup-fedora. Feel free to override these values with your desired values at play level.
+# This file also serves as another demo of ansible-lint diagnostic messages.
+# defaults files for fedora_workstation role. Feel free to override these values with your values at the desired level.
 nvidia: false
 docker: false
 

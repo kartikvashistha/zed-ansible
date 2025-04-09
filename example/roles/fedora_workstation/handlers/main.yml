@@ -6,7 +6,12 @@
     state: started
     enabled: true
 
-- name: service 2
+# Adding unnecessary blank lines to demo ansible-lint diagnostic messages
+
+
+
+# This is in lower case on purpose to demo ansible-lint warnings
+- name: start podman service
   ansible.builtin.service:
     name: podman
     state: started

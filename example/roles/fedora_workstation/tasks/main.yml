@@ -14,11 +14,6 @@
   become: true
   become_user: root
 
-- name: Something
-  ansible.builtin.dnf:
-    name: zsh
-    state: present
-
 - name: Enable rpm fusion free & non free repos
   ansible.builtin.dnf:
     name: "{{ rpmfusion_free }}, {{ rpmfusion_non_free }}"
@@ -30,15 +25,25 @@
 - name: Add third party repos
   ansible.builtin.yum_repository:
     name: "{{ item.name }}"
-    description: "{{ item.description }}"
-    baseurl: "{{ item.baseurl }}"
-    enabled: "{{ item.enabled }}"
-    gpgcheck: "{{ item.gpgcheck }}"
-    repo_gpgcheck: "{{ item.repo_gpgcheck }}"
-    gpgkey: "{{ item.gpgkey }}"
+    description: "{{ item.description | default(omit) }}"
+    baseurl: "{{ item.baseurl | default(omit) }}"
+    enabled: "{{ item.enabled | default(omit) }}"
+    gpgcheck: "{{ item.gpgcheck | default(omit) }}"
+    repo_gpgcheck: "{{ item.repo_gpgcheck | default(omit) }}"
+    gpgkey: "{{ item.gpgkey | default(omit) }}"
+    skip_if_unavailable: "{{ item.skip_if_unavailable | default(omit) }}"
+    metadata_expire: "{{ item.metadata_expire | default(omit) }}"
   with_items: "{{ third_party_repos }}"
   become: true
   become_user: root
+
+- name: Install Copr repos
+  community.general.copr:
+    name: "{{ item.name }}"
+    state: "{{ item.state }}"
+  with_items: "{{ copr_repos }}"
+  become_user: root
+  become: true
 
 - name: Install groups
   ansible.builtin.dnf:
@@ -98,3 +103,7 @@
     name: commitizen
     global: true
 
+- name: Install cz-conventional-changelog node.js package globally
+  community.general.npm:
+    name: cz-conventional-changelog
+    global: true

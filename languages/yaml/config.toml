@@ -1,5 +1,5 @@
 name = "Ansible"
-grammar = "ansible"
+grammar = "yaml"
 path_suffixes = ["ansible"]
 first_line_pattern = '^#!.*ansible'
 line_comments = ["# "]

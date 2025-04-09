@@ -1,9 +1,21 @@
+use serde_json::Value;
 use std::{env, fs};
 use zed_extension_api::{self as zed, serde_json, settings::LspSettings, Result};
 
 const SERVER_PATH: &str =
     "node_modules/@ansible/ansible-language-server/bin/ansible-language-server";
 const PACKAGE_NAME: &str = "@ansible/ansible-language-server";
+
+fn merge(a: &mut Value, b: &Value) {
+    match (a, b) {
+        (Value::Object(a), Value::Object(b)) => {
+            for (k, v) in b {
+                merge(a.entry(k.clone()).or_insert(Value::Null), v);
+            }
+        }
+        (a, b) => *a = b.clone(),
+    }
+}
 
 struct AnsibleExtension {
     // cached_binary_path: Option<String>,
@@ -92,13 +104,34 @@ impl zed::Extension for AnsibleExtension {
         _language_server_id: &zed::LanguageServerId,
         worktree: &zed::Worktree,
     ) -> Result<Option<serde_json::Value>> {
-        let settings = LspSettings::for_worktree("ansible-language-server", worktree)
+        let mut final_settings = serde_json::json!({
+            "ansible": {
+                "path": "ansible"
+            },
+            "executionEnvironment": {
+                "enabled": false
+            },
+            "python": {
+                "interpreterPath": "python3"
+             },
+            "validation": {
+                "enabled": "true",
+                "lint": {
+                    "enabled": "true",
+                    "path": "ansible-lint"
+               }
+            }
+        });
+
+        let zed_lsp_settings = LspSettings::for_worktree("ansible-language-server", worktree)
             .ok()
             .and_then(|lsp_settings| lsp_settings.settings.clone())
             .unwrap_or_default();
 
+        merge(&mut final_settings, &zed_lsp_settings);
+
         Ok(Some(serde_json::json!({
-            "ansible": settings
+            "ansible": final_settings
         })))
     }
 }

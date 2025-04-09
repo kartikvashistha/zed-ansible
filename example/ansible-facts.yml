@@ -1,5 +1,8 @@
+# vim:ft=yaml.ansible code: language=ansible
+---
 - name: Display system facts that are available to Ansible
-  hosts: localhost
+  hosts: all
+
   tasks:
     - name: Print all available facts
       ansible.builtin.debug:
