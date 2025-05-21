@@ -1,6 +1,6 @@
 # zed-ansible
 
-Ansible LSP Extension for the Zed editor.
+Community maintained Ansible extension for the Zed editor.
 
 ## Pre-requisites
 
