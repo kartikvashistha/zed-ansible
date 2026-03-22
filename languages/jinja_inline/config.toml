@@ -1,0 +1,3 @@
+name = "Jinja2 Inline"
+grammar = "jinja_inline"
+path_suffixes = []

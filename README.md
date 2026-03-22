@@ -179,8 +179,16 @@ This leverages the Ansible language server to distinguish:
 - **Module parameters** (e.g., `src`, `dest`)
 - **Ansible keywords** (`when`, `become`, `register`, `tasks`, etc.)
 
-> [!NOTE]
-> Full Jinja2 expression highlighting within Ansible files is not yet available.
+#### Jinja2 Highlighting
+
+Jinja2 expressions are highlighted within Ansible YAML files via Tree-sitter injection:
+
+- `{{ variable }}` — variable expressions in YAML values
+- `{% for %}`, `{% if %}`, `{% block %}` — control flow tags
+- `{# comment #}` — Jinja2 comments
+- `when: expression` — bare Jinja2 in conditional fields (`when`, `changed_when`, `failed_when`, `check_mode`)
+
+For standalone `.j2` template files, install the [Jinja2 Template Support](https://github.com/ArcherHume/jinja2-support) extension.
 
 ## Notes
 
