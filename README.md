@@ -188,7 +188,7 @@ Jinja2 expressions are highlighted within Ansible YAML files via Tree-sitter inj
 - `{# comment #}` — Jinja2 comments
 - `when: expression` — bare Jinja2 in conditional fields (`when`, `changed_when`, `failed_when`, `check_mode`)
 
-For standalone `.j2` template files, install the [Jinja2 Template Support](https://github.com/ArcherHume/jinja2-support) extension.
+For standalone `.j2` template files, install the [Jinja2 Template Support](https://zed.dev/extensions/jinja2) extension.
 
 ## Notes
 
