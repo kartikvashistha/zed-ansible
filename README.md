@@ -17,7 +17,7 @@ sudo dnf install ansible python3-ansible-lint
 sudo apt install ansible ansible-lint python3
 ```
 
-## Recomended Settings
+## Recommended Settings
 
 For the best experience, add the following configuration(s) as needed under Zed's global settings:
 
@@ -25,9 +25,9 @@ For the best experience, add the following configuration(s) as needed under Zed'
 
 By default, the Ansible LSP attaches to all files ending with `.ansible` due to [this](https://github.com/zed-industries/zed/issues/10997).
 
-Currently, it is not possible to use glob patterns within this extension's code to detect Ansible files under common directory patterns - as such, for the time being, it is reccomended to configure the file detection under `file_types` under Zed's settings:
+Currently, it is not possible to use glob patterns within this extension's code to detect Ansible files under common directory patterns - as such, for the time being, it is recommended to configure the file detection under `file_types` under Zed's settings:
 
-```json
+```jsonc
 ...
 "file_types": {
     "Ansible": [
@@ -63,7 +63,7 @@ If your inventory file is in the YAML format, you can either:
 
 - Or configure setting this schema under `lsp.yaml-language-server` under Zed's settings for your inventory pattern ([ref](https://zed.dev/docs/languages/yaml)):
 
-```json
+```jsonc
 "lsp": {
     "yaml-language-server": {
       "settings": {
@@ -84,7 +84,7 @@ If your inventory file is in the YAML format, you can either:
 
 By default, the following config is passed to the Ansible language server:
 
-```json
+```jsonc
 {
   "ansible": {
     "ansible": {
@@ -109,7 +109,7 @@ By default, the following config is passed to the Ansible language server:
 
 When desired, the above default settings can be overridden via Zed's `settings.json` configuration file under the `lsp` key:
 
-```json
+```jsonc
 ...
 "lsp": {
   "ansible-language-server": {
@@ -140,18 +140,53 @@ When desired, the above default settings can be overridden via Zed's `settings.j
 This config conveniently mirrors [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig/blob/ad32182cc4a03c8826a64e9ced68046c575fdb7d/lua/lspconfig/server_configurations/ansiblels.lua#L6-L23)'s defaults for Ansible language server.
 A full list of options/settings, that can be passed to the server, can be found [here](https://github.com/ansible/vscode-ansible/blob/5a89836d66d470fb9d20e7ea8aa2af96f12f61fb/docs/als/settings.md).
 
+#### Using with uv-managed virtual environments
+
+If you use [uv](https://docs.astral.sh/uv/) to manage your project's virtual environment, point the language server to the `.venv` Python interpreter and ansible-lint:
+
+```jsonc
+"lsp": {
+  "ansible-language-server": {
+    "settings": {
+      "python": {
+        "interpreterPath": ".venv/bin/python"
+      },
+      "validation": {
+        "lint": {
+          "path": ".venv/bin/ansible-lint"
+        }
+      }
+    }
+  }
+}
+```
+
 ### Highlighting
 
-Currently, this implementation only uses YAML for syntax highlighting. Full semantic or treesitter highlighting for Jinja2 expressions within Ansible files is currenly unavailable.
+This extension uses YAML for base syntax highlighting. For enhanced highlighting of Ansible keywords, module names, and parameters, enable [semantic tokens](https://zed.dev/docs/semantic-tokens) in your Zed settings:
+
+```jsonc
+"languages": {
+  "Ansible": {
+    "semantic_tokens": "combined"
+  }
+}
+```
+
+This leverages the Ansible language server to distinguish:
+
+- **Module names** (e.g., `ansible.builtin.copy`)
+- **Module parameters** (e.g., `src`, `dest`)
+- **Ansible keywords** (`when`, `become`, `register`, `tasks`, etc.)
 
 > [!NOTE]
-> Additional highlighting via the LSP doesn't work due to lack of semantic token support within Zed itself. Follow [this](https://github.com/zed-industries/zed/issues/7450) issue to keep upto date on when it's available for use.
+> Full Jinja2 expression highlighting within Ansible files is not yet available.
 
 ## Notes
 
 In it's current state, the language server gets started and performs decently well.
 Sometimes, the language server may _crash_ either when the completion list returned from the LSP is quite large or when switching between multiple Ansible files. For the time being, I'm unable to determine how this can be fixed permanently.
 
-To restart the language server, open the Command Pallete and execute `editor: Restart Language Server`.
+To restart the language server, open the Command Palette and execute `editor: Restart Language Server`.
 
 If completions from the community or any other collection dont appear, create an `ansible.cfg` file in your project and add the path of your collection in there.
