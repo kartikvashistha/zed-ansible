@@ -1,6 +1,6 @@
 id = "ansible"
 name = "Ansible"
-version = "0.2.0"
+version = "0.3.0"
 schema_version = 1
 
 description = "Ansible support for Zed. For the best experience, please find the recommended settings in the extension project's README."
@@ -14,3 +14,13 @@ language = "Ansible"
 [grammars.yaml]
 repository = "https://github.com/zed-industries/tree-sitter-yaml"
 commit = "baff0b51c64ef6a1fb1f8390f3ad6015b83ec13a"
+
+[grammars.jinja]
+repository = "https://github.com/cathaysia/tree-sitter-jinja"
+commit = "d268e94390e97fb5f859bd6d822155ba0d8fb0d1"
+path = "tree-sitter-jinja"
+
+[grammars.jinja_inline]
+repository = "https://github.com/cathaysia/tree-sitter-jinja"
+commit = "d268e94390e97fb5f859bd6d822155ba0d8fb0d1"
+path = "tree-sitter-jinja_inline"
