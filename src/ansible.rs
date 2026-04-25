@@ -2,8 +2,7 @@ use serde_json::Value;
 use std::{env, fs};
 use zed_extension_api::{self as zed, serde_json, settings::LspSettings, Result};
 
-const SERVER_PATH: &str =
-    "node_modules/.bin/ansible-language-server";
+const SERVER_PATH: &str = "node_modules/.bin/ansible-language-server";
 const PACKAGE_NAME: &str = "@ansible/ansible-language-server";
 
 fn merge(a: &mut Value, b: &Value) {
@@ -123,7 +122,7 @@ impl zed::Extension for AnsibleExtension {
             }
         });
 
-        let zed_lsp_settings = LspSettings::for_worktree("ansible-language-server", worktree)
+        let zed_lsp_settings = LspSettings::for_worktree("ansible", worktree)
             .ok()
             .and_then(|lsp_settings| lsp_settings.settings.clone())
             .unwrap_or_default();

@@ -112,7 +112,7 @@ When desired, the above default settings can be overridden via Zed's `settings.j
 ```jsonc
 ...
 "lsp": {
-  "ansible-language-server": {
+  "ansible": {
     "settings": {
       // Note: the Zed Ansible extension prefixes all settings with the `ansible` key to provide for a cleaner config under here.
       // So instead of using `ansible.ansible.path` use `ansible.path`and so on.
@@ -146,7 +146,7 @@ If you use [uv](https://docs.astral.sh/uv/) to manage your project's virtual env
 
 ```jsonc
 "lsp": {
-  "ansible-language-server": {
+  "ansible": {
     "settings": {
       "python": {
         "interpreterPath": ".venv/bin/python"
