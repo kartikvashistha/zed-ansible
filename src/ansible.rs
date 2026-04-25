@@ -3,7 +3,7 @@ use std::{env, fs};
 use zed_extension_api::{self as zed, serde_json, settings::LspSettings, Result};
 
 const SERVER_PATH: &str =
-    "node_modules/@ansible/ansible-language-server/bin/ansible-language-server";
+    "node_modules/.bin/ansible-language-server";
 const PACKAGE_NAME: &str = "@ansible/ansible-language-server";
 
 fn merge(a: &mut Value, b: &Value) {
