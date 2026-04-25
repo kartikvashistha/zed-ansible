@@ -49,7 +49,7 @@
       (binary_expression
         (unary_expression
           (primary_expression
-            (identifier) @variable.member)))))))
+            (identifier) @variable.member))))))
 
 (assignment_expression
   "."
