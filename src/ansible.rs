@@ -9,15 +9,47 @@ fn merge(a: &mut Value, b: &Value) {
     match (a, b) {
         (Value::Object(a), Value::Object(b)) => {
             for (k, v) in b {
-                merge(a.entry(k.clone()).or_insert(Value::Null), v);
+                match a.get_mut(k) {
+                    Some(existing) => merge(existing, v),
+                    None => {
+                        if !v.is_null() {
+                            a.insert(k.clone(), v.clone());
+                        }
+                    }
+                }
             }
+        }
+        (_, Value::Null) => {
+            // skip nulls
         }
         (a, b) => *a = b.clone(),
     }
 }
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_merge() {
+        let mut default_settings = serde_json::json!({ "a": 1, "b":1});
+        let settings_overrides = serde_json::json!({ "b": 2 , "c": 3});
+        merge(&mut default_settings, &settings_overrides);
+        assert_eq!(
+            default_settings,
+            serde_json::json!({ "a": 1, "b": 2, "c": 3 })
+        );
+    }
+
+    #[test]
+    fn test_merge_with_null_overrides() {
+        let mut default_settings = serde_json::json!({ "a": 1, "b":1});
+        let settings_overrides = &Value::Null;
+        merge(&mut default_settings, &settings_overrides);
+        assert_eq!(default_settings, serde_json::json!({ "a": 1, "b": 1 }));
+    }
+}
 
 struct AnsibleExtension {
-    // cached_binary_path: Option<String>,
     did_find_server: bool,
 }
 
