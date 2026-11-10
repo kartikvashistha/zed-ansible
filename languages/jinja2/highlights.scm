@@ -83,7 +83,6 @@
   "endautoescape"
   "do"
   "debug"
-  "required"
 ] @keyword
 
 ; Import keywords
