@@ -34,9 +34,9 @@
 (identifier) @variable
 
 ; Attribute / member access: foo.bar
-(expression
+(primary_expression
   "."
-  (expression)+ @variable.member)
+  (identifier) @variable.member)
 
 (assignment_expression
   "."

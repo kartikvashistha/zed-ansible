@@ -33,23 +33,9 @@
           (identifier) @variable.parameter)))))
 
 ; Attribute / member access: foo.bar
-(expression
+(primary_expression
   "."
-  (expression
-    (binary_expression
-      .
-      (unary_expression
-        (primary_expression
-          (identifier) @variable.member)))))
-
-(expression
-  "."
-  (expression
-    (binary_expression
-      (binary_expression
-        (unary_expression
-          (primary_expression
-            (identifier) @variable.member))))))
+  (identifier) @variable.member)
 
 (assignment_expression
   "."
@@ -68,13 +54,13 @@
   "if"
   "elif"
   "else"
-  "endif"
+  (endif_statement)
 ] @keyword.conditional
 
 [
   "for"
   "in"
-  "endfor"
+  (endfor_statement)
   "continue"
   "break"
 ] @keyword.repeat
@@ -82,22 +68,22 @@
 ; Block/structure keywords
 [
   "block"
-  "endblock"
+  (endblock_statement)
   "macro"
-  "endmacro"
+  (endmacro_statement)
   "call"
-  "endcall"
+  (endcall_statement)
   "filter"
-  "endfilter"
+  (endfilter_statement)
   "set"
-  "endset"
+  (endset_statement)
   "with"
-  "endwith"
+  (endwith_statement)
   "trans"
-  "endtrans"
+  (endtrans_statement)
   "pluralize"
   "autoescape"
-  "endautoescape"
+  (endautoescape_statement)
   "do"
   "debug"
   "required"
